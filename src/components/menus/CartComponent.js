@@ -3,13 +3,16 @@ import useCustomLogin from "../../hooks/useCustomLogin";
 import useCustomCart from "../../hooks/useCustomCart";
 import CartItemComponent from "../cart/CartItemComponent";
 import Payment from "../Payment";
+import OrderComplete from "../OrderComplete";
 
 const CartComponent = () => {
   const { isLogin, loginState } = useCustomLogin();
-  const { refreshCart, cartItems, changeCart } = useCustomCart();
-  const [showModal, setShowModal] = useState(false); // 모달 상태 추가
+  const { refreshCart, cartItems, changeCart, clearCart } = useCustomCart();
   const [totalPrice, setTotalPrice] = useState(0); // 총 가격 상태 추가
   const [totalQty, setTotalQty] = useState(0); // 총 수량 상태 추가
+
+  const [showModal, setShowModal] = useState(false); // 모달 상태 추가
+  const [showNewModal, setShowNewModal] = useState(false); // 새 모달 상태 추가
 
   useEffect(() => {
     if (isLogin) {
@@ -37,8 +40,15 @@ const CartComponent = () => {
     setShowModal(true); // 모달 열기
   };
 
-  const closeModal = () => {
-    setShowModal(false); // 모달 닫기
+  const closeModalAndOpenNewModal = () => {
+    setShowModal(false); // 기존 모달 닫기
+    // 새로운 모달을 열기 위해 showModal 상태를 true로 업데이트
+    setShowNewModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowNewModal(false); // 새 모달 닫기
+    clearCart(); // 장바구니 비우기
   };
 
   return (
@@ -83,27 +93,108 @@ const CartComponent = () => {
             </ul>
           </div>
           {/* 전체 수량과 전체 금액 표시 */}
-          <div className="flex justify-between items-center mt-4">
-            <div>전체 수량: {totalQty}</div>
-            <div>총 금액: {totalPrice.toLocaleString("ko-KR")}원</div>
-          </div>
-          <button
-            onClick={handleCheckout}
-            className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mt-4"
+          <div
+            className="flex justify-between items-center mt-4"
+            style={{ display: "flex", justifyContent: "flex-end" }}
           >
-            전체 상품 주문하기
-          </button>
+            <div style={{ marginRight: "30px", fontSize: "20px" }}>
+              전체 수량 : {totalQty}개
+            </div>
+            <div style={{ marginRight: "30px", fontSize: "20px" }}>
+              총 금액 : {totalPrice}원
+            </div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <button
+              onClick={handleCheckout}
+              className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mt-4"
+              style={{
+                width: "200px",
+                height: "35px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              전체 상품 주문하기
+            </button>
+          </div>
           {showModal && ( // 모달 표시 조건 추가
             <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-              <div className="bg-white p-8 rounded-lg">
-                <Payment totalPrice={totalPrice} closeModal={closeModal} />{" "}
-                {/* Payment 컴포넌트 렌더링 */}
+              <div
+                className="bg-white p-8 rounded-lg"
+                style={{ width: "400px", height: "600px", zIndex: 9999999 }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
+                  }}
+                >
+                  <Payment
+                    totalPrice={totalPrice}
+                    closeModal={closeModalAndOpenNewModal}
+                  />{" "}
+                  {/* Payment 컴포넌트 렌더링 */}
+                </div>
               </div>
             </div>
           )}
         </div>
       ) : (
         <></>
+      )}
+      {showNewModal && (
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
+          <div className="bg-pink-100 p-4 rounded-lg">
+            <div
+              className="bg-white p-8 rounded-lg"
+              style={{
+                width: "600px",
+                height: "800px",
+                zIndex: 9999999,
+                border: "1px solid #ccc", // 회색 테두리 추가
+              }}
+            >
+              <div className="text-center font-bold text-xl mb-4">
+                <h1
+                  style={{
+                    fontSize: "40px",
+                    marginBottom: "30px",
+                  }}
+                >
+                  주문 내역 확인
+                </h1>
+              </div>
+              <OrderComplete
+                totalPrice={totalPrice}
+                closeModal={closeModalAndOpenNewModal}
+              />
+              <button
+                onClick={handleCloseModal}
+                className="bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded mt-4"
+                style={{
+                  width: "200px",
+                  height: "35px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                닫기
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

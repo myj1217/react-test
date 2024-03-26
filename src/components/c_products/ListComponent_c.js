@@ -6,6 +6,7 @@ import FetchingModal from "../common/FetchingModal";
 import { API_SERVER_HOST } from "../../api/todoApi";
 import PageComponent from "../common/PageComponent";
 import useCustomLogin from "../../hooks/useCustomLogin";
+import { useNavigate } from "react-router-dom";
 
 const host = API_SERVER_HOST;
 
@@ -70,9 +71,7 @@ const ListComponent_c = () => {
 
                 <div className="bottom-0 font-extrabold bg-white">
                   <div className="text-center p-1">{product.pname}</div>
-                  <div className="text-center p-1">
-                    {product.price.toLocaleString("ko-KR")}원
-                  </div>
+                  <div className="text-center p-1">{product.price}원</div>
                 </div>
               </div>
             </div>
