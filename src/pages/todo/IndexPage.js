@@ -19,14 +19,14 @@ const IndexPage = () => {
           className="text-xl m-1 p-2  w-20 font-extrabold text-center underline"
           onClick={handleClickList}
         >
-          LIST
+          목록
         </div>
 
         <div
           className="text-xl m-1 p-2 w-20 font-extrabold  text-center underline"
           onClick={handleClickAdd}
         >
-          ADD
+          글쓰기
         </div>
       </div>
       <div className="flex flex-wrap w-full">

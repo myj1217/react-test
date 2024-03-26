@@ -18,12 +18,16 @@ const host = API_SERVER_HOST;
 
 const ReadComponent_c = ({ pno }) => {
   const [product, setProduct] = useState(initState);
+
   //화면 이동용 함수
   const { moveToList, moveToModify } = useCustomMove();
+
   //fetching
   const [fetching, setFetching] = useState(false);
+
   // 장바구니 기능
   const { changeCart, cartItems } = useCustomCart();
+
   // 로그인 정보
   const { loginState } = useCustomLogin();
 
@@ -59,7 +63,7 @@ const ReadComponent_c = ({ pno }) => {
 
       <div className="flex justify-center mt-10">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-          <div className="w-1/5 p-6 text-right font-bold">상품번호</div>
+          <div className="w-1/5 p-6 text-right font-bold">PNO</div>
           <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
             {product.pno}
           </div>
@@ -68,7 +72,7 @@ const ReadComponent_c = ({ pno }) => {
 
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-          <div className="w-1/5 p-6 text-right font-bold">상품명</div>
+          <div className="w-1/5 p-6 text-right font-bold">PNAME</div>
           <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
             {product.pname}
           </div>
@@ -76,7 +80,7 @@ const ReadComponent_c = ({ pno }) => {
       </div>
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-          <div className="w-1/5 p-6 text-right font-bold">가격</div>
+          <div className="w-1/5 p-6 text-right font-bold">PRICE</div>
           <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
             {product.price}
           </div>
@@ -84,7 +88,7 @@ const ReadComponent_c = ({ pno }) => {
       </div>
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
-          <div className="w-1/5 p-6 text-right font-bold">상품설명</div>
+          <div className="w-1/5 p-6 text-right font-bold">PDESC</div>
           <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
             {product.pdesc}
           </div>
@@ -107,21 +111,21 @@ const ReadComponent_c = ({ pno }) => {
           className="inline-block rounded p-4 m-2 text-xl w-32  text-white bg-green-500"
           onClick={handleClickAddCart}
         >
-          장바구니에<br/>담기
+          Add Cart
         </button>
         <button
           type="button"
           className="inline-block rounded p-4 m-2 text-xl w-32  text-white bg-red-500"
           onClick={() => moveToModify(pno)}
         >
-          상품정보<br/>수정하기
+          Modify
         </button>
         <button
           type="button"
           className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
           onClick={moveToList}
         >
-          리스트로<br/>돌아가기
+          List
         </button>
       </div>
     </div>

@@ -60,7 +60,7 @@ const AddComponent_c = () => {
       {result ? (
         <ResultModal
           title={"Product Add Result"}
-          content={`${result}번째 상품으로 등록되었습니다!`}
+          content={`${result}번 등록 완료`}
           callbackFn={closeModal}
         />
       ) : (

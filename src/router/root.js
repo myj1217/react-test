@@ -6,9 +6,16 @@ import memberRouter from "./memberRouter";
 
 const Loading = <div>Loading....</div>;
 const Main = lazy(() => import("../pages/MainPage"));
-const About = lazy(() => import("../pages/AboutPage"));
+const FAQ = lazy(() => import("../pages/FAQ.js"));
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"));
 const ProductsRouter = lazy(() => import("../pages/products/IndexPage"));
+const MonthArtist = lazy(() => import("../pages/MonthArtistPage.js"));
+const InquiryForm = lazy(() => import("../components/InquiryForm.js"));
+const Goods = lazy(() => import("../pages/GoodsListPage.js"));
+
+const Decorations = lazy(() => import("../pages/DecorationsPage.js"));
+const Paintings = lazy(() => import("../pages/PaintingsPage.js"));
+const ForgotPassword = lazy(() => import("../pages/ForgotPassword.js"));
 
 const root = createBrowserRouter([
   {
@@ -23,7 +30,16 @@ const root = createBrowserRouter([
     path: "/about",
     element: (
       <Suspense fallback={Loading}>
-        <About />
+        <FAQ />
+        <InquiryForm />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/monthArtist",
+    element: (
+      <Suspense fallback={Loading}>
+        <MonthArtist />
       </Suspense>
     ),
   },
@@ -46,9 +62,41 @@ const root = createBrowserRouter([
     children: productsRouter(),
   },
   {
-    // member/login
     path: "member",
     children: memberRouter(),
+  },
+  {
+    path: "goods",
+    element: (
+      <Suspense fallback={Loading}>
+        <Goods />
+      </Suspense>
+    ),
+  },
+
+  {
+    path: "decorations",
+    element: (
+      <Suspense fallback={Loading}>
+        <Decorations />
+      </Suspense>
+    ),
+  },
+  {
+    path: "paintings",
+    element: (
+      <Suspense fallback={Loading}>
+        <Paintings />
+      </Suspense>
+    ),
+  },
+  {
+    path: "forgot-password",
+    element: (
+      <Suspense fallback={Loading}>
+        <ForgotPassword />
+      </Suspense>
+    ),
   },
 ]);
 

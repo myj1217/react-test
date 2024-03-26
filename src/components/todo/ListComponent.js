@@ -9,7 +9,7 @@ const initState = {
   pageRequestDTO: null,
   prev: false,
   next: false,
-  totoalCount: 0,
+  totalCount: 0,
   prevPage: 0,
   nextPage: 0,
   totalPage: 0,
@@ -18,8 +18,6 @@ const initState = {
 
 const ListComponent = () => {
   const { page, size, moveToList, refresh, moveToRead } = useCustomMove();
-
-  //serverData는 나중에 사용
   const [serverData, setServerData] = useState(initState);
 
   useEffect(() => {
@@ -30,32 +28,33 @@ const ListComponent = () => {
   }, [page, size, refresh]);
 
   return (
-    <div className="border-2 border-blue-100 mt-10 mr-2 ml-2">
-      <div className="flex flex-wrap mx-auto justify-center p-6">
-        {serverData.dtoList.map((todo) => (
-          <div
-            key={todo.tno}
-            className="w-full min-w-[400px]  p-2 m-2 rounded shadow-md"
-            onClick={() => moveToRead(todo.tno)}
-          >
-            <div className="flex ">
-              <div className="font-extrabold text-2xl p-2 w-1/12">
-                {todo.tno}
-              </div>
-              <div className="text-1xl m-1 p-2 w-8/12 font-extrabold">
+    <div className="max-w-4xl mx-auto mt-10 bg-white rounded-lg shadow-lg">
+      <div className="p-6">
+        <h2 className="text-2xl font-bold text-gray-800">게시글</h2>
+        <div className="mt-6">
+          {serverData.dtoList.map((todo) => (
+            <div
+              key={todo.tno}
+              className="flex items-center p-4 bg-gray-100 rounded-md hover:bg-blue-100 cursor-pointer mb-4 transition duration-300 ease-in-out"
+              onClick={() => moveToRead(todo.tno)}
+            >
+              <div className="text-lg font-semibold flex-grow">
                 {todo.title}
               </div>
-              <div className="text-1xl m-1 p-2 w-2/10 font-medium">
-                {todo.dueDate}
+              <div className="ml-4 text-gray-600">{todo.dueDate}</div>
+              <div className="text-sm font-medium text-gray-500">
+                #{todo.tno}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <PageComponent
-        serverData={serverData}
-        movePage={moveToList}
-      ></PageComponent>
+      <div className="bg-gray-50 p-4 rounded-b-lg">
+        <PageComponent
+          serverData={serverData}
+          movePage={moveToList}
+        ></PageComponent>
+      </div>
     </div>
   );
 };
