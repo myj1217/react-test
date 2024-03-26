@@ -11,8 +11,23 @@ const CartItemComponent = ({
   imageFile,
   changeCart,
   email,
+  // clear,
 }) => {
   const handleClickQty = (amount) => {
+    if (qty + amount < 1) {
+      if (
+        window.confirm("해당 상품을 장바구니에서 삭제하시겠습니까?") === false
+      ) {
+        return;
+      }
+    }
+    // if (clear) {
+    //   qty = 0;
+    //   clear = false;
+    //   console.log(clear);
+    // }
+
+    // changeCart({ email, cino, pno, qty: qty + amount, clear });
     changeCart({ email, cino, pno, qty: qty + amount });
   };
 
@@ -27,7 +42,7 @@ const CartItemComponent = ({
             <img alt="img" src={`${host}/api/products/view/s_${imageFile}`} />
           </div>
           <div className="w-2/12">{pname}</div>
-          <div className="w-2/12">{price}</div>
+          <div className="w-2/12">{price.toLocaleString("ko-KR")}</div>
           <div className="w-2/12">
             {qty}
             <button
@@ -43,7 +58,7 @@ const CartItemComponent = ({
               [-]
             </button>
           </div>
-          <div className="w-2/12">{qty * price}</div>
+          <div className="w-2/12">{(qty * price).toLocaleString("ko-KR")}</div>
           <div className="w-1/12">
             {" "}
             <button
@@ -53,53 +68,8 @@ const CartItemComponent = ({
               삭제
             </button>
           </div>
-          {/* <li>주문관리</li> */}
-          {/* <li>배송비/배송형태</li> */}
         </div>
       </div>
-
-      {/* <div className=" m-1 p-1 ">
-          <img src={`${host}/api/products/view/s_${imageFile}`} />
-        </div>
-
-        <div className="justify-center p-2 text-xl ">
-          <div className="justify-end w-full"></div>
-          <div>Cart Item No: {cino}</div>
-          <div>Pno: {pno}</div>
-          <div>Name: {pname}</div>
-          <div>Price: {price}</div>
-          <div className="flex ">
-            <div className="w-2/3">Qty: {qty}</div>
-            <div>
-              <button
-                className="m-1 p-1 text-2xl bg-white w-8 rounded-lg"
-                onClick={() => handleClickQty(1)}
-              >
-                +
-              </button>
-              <button
-                className="m-1 p-1 text-2xl bg-white w-8 rounded-lg"
-                onClick={() => handleClickQty(-1)}
-              >
-                -
-              </button>
-            </div>
-          </div>
-          <div>
-            <div className="flex text-white font-bold p-2 justify-center">
-              <button
-                className="m-1 p-1 text-xl text-white bg-black w-12 rounded-lg"
-                onClick={() => handleClickQty(-1 * qty)}
-              >
-                삭제
-              </button>
-            </div>
-            <div className="font-extrabold border-t-2 text-right m-2 pr-4">
-              {qty * price}
-            </div>
-          </div>
-        </div> */}
-      {/* </div> */}
     </li>
   );
 };

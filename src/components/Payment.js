@@ -70,7 +70,7 @@ function Payment({ totalPrice, closeModal }) {
             marginBottom: "20px",
           }}
         >
-          결제 정보 입력
+          결제 정보
         </h1>
       </div>
       <div className="form-box">
@@ -82,7 +82,7 @@ function Payment({ totalPrice, closeModal }) {
               id="email"
               name="email"
               value={buyerInfo.email}
-              // onChange={handleInputChange}
+              onChange={handleInputChange}
             />
           </div>
           <div className="form-group" style={{ margin: "15px" }}>
@@ -106,8 +106,12 @@ function Payment({ totalPrice, closeModal }) {
             />
           </div>
           <div className="form-group" style={{ margin: "15px" }}>
-            <label htmlFor="address">주소 : </label>
-            <input
+            <label htmlFor="address" className="flex">
+              주소 :{" "}
+            </label>
+            <textarea
+              style={{ resize: "none" }}
+              rows={3}
               type="text"
               id="address"
               name="address"
