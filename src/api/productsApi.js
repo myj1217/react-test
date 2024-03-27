@@ -24,7 +24,7 @@ export const getList = async (pageParam) => {
 };
 
 export const getOne = async (pno) => {
-  const res = await jwtAxios.get(`${host}/${pno}`);
+  const res = await axios.get(`${host}/${pno}`);
 
   return res.data;
 };

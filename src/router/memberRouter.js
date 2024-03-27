@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
+import LoadingSpinner from "./LoadingSpninner"; 
 
-const Loading = <div>Loading....</div>;
 const Login = lazy(() => import("../pages/member/LoginPage"));
 const KakaoRedirect = lazy(() => import("../pages/member/KakaoRedirectPage"));
 const MemberModify = lazy(() => import("../pages/member/ModifyPage"));
@@ -13,7 +13,7 @@ const memberRouter = () => {
     {
       path: "login",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <Login />
         </Suspense>
       ),
@@ -21,7 +21,7 @@ const memberRouter = () => {
     {
       path: "kakao",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <KakaoRedirect />
         </Suspense>
       ),
@@ -29,7 +29,7 @@ const memberRouter = () => {
     {
       path: "modify",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <MemberModify />
         </Suspense>
       ),
@@ -37,7 +37,7 @@ const memberRouter = () => {
     {
       path: "register",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <Register />
         </Suspense>
       ),
@@ -45,7 +45,7 @@ const memberRouter = () => {
     {
       path: "forgot-password",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <ForgotPassword />
         </Suspense>
       ),
@@ -53,7 +53,7 @@ const memberRouter = () => {
     {
       path: "mypage",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <MyPage />
         </Suspense>
       ),

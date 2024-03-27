@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpninner"; 
 
 const Loading = <div>Loading....</div>;
 const ProductsList = lazy(() => import("../pages/products/ListPage"));
@@ -15,7 +16,7 @@ const productsRouter = () => {
     {
       path: "list",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <ProductsList />
         </Suspense>
       ),
@@ -27,7 +28,7 @@ const productsRouter = () => {
     {
       path: "add",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <ProductsAdd />
         </Suspense>
       ),
@@ -35,7 +36,7 @@ const productsRouter = () => {
     {
       path: "read/:pno",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <ProductRead />
         </Suspense>
       ),
@@ -43,7 +44,7 @@ const productsRouter = () => {
     {
       path: "modify/:pno",
       element: (
-        <Suspense fallback={Loading}>
+        <Suspense fallback={<LoadingSpinner />}>
           <ProductModify />
         </Suspense>
       ),

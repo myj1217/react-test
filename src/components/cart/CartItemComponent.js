@@ -11,13 +11,23 @@ const CartItemComponent = ({
   imageFile,
   changeCart,
   email,
+  // clear,
 }) => {
   const handleClickQty = (amount) => {
     if (qty + amount < 1) {
-      if (window.confirm("삭제하시겠습니까?") === false) {
+      if (
+        window.confirm("해당 상품을 장바구니에서 삭제하시겠습니까?") === false
+      ) {
         return;
       }
     }
+    // if (clear) {
+    //   qty = 0;
+    //   clear = false;
+    //   console.log(clear);
+    // }
+
+    // changeCart({ email, cino, pno, qty: qty + amount, clear });
     changeCart({ email, cino, pno, qty: qty + amount });
   };
 

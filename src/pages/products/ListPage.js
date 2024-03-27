@@ -1,10 +1,15 @@
 import ListComponent_c from "../../components/c_products/ListComponent_c";
+import { FaGift } from "react-icons/fa";
 
 const ListPage = () => {
   return (
-    <div className="p-4 w-full bg-white">
-      <div className="text-3xl font-extrabold">전체보기</div>
-      <ListComponent_c />
+    <div className="flex flex-col w-full">
+      <div className="h-11 bg-gray-700 text-white flex items-center pl-8 sticky top-0 z-55">
+        <FaGift className="w-6 h-6 mr-2" />상품 목록
+      </div>
+      <div className="w-full h-full">
+        <ListComponent_c />
+      </div>
     </div>
   );
 };

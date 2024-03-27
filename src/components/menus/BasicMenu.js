@@ -124,7 +124,7 @@ const BasicMenu = () => {
           <FaFacebook className="cursor-pointer" />
           <FaInstagram className="cursor-pointer" />
         </div>
-        <div id="logo" className="w-1/3 p-10">
+        <div id="logo" className="w-1/3 p-6">
           <p className="text-5xl text-center">
             <Link to={"/"}>니모내모</Link>
           </p>
@@ -143,7 +143,7 @@ const BasicMenu = () => {
               </li>
               <li className="pl-3">
                 <Link to={"/member/mypage"}>마이페이지</Link>
-                </li>
+              </li>
               <li className="pl-3">
                 <a onClick={clickLogout} style={{ cursor: "pointer" }}>
                   로그아웃
@@ -233,13 +233,13 @@ const BasicMenu = () => {
             )}
           </div>
           <div className="pr-4">
-            <Link to={"/"}>커뮤니티</Link>
+            <Link to={"/comunity"}>커뮤니티</Link>
           </div>
           <div className="pr-4">
-            <Link to={"/"}>이달의 아티스트</Link>
+            <Link to={"/month"}>이달의 아티스트</Link>
           </div>
           <div className="pr-4">
-            <Link to={"/"}>고객센터</Link>
+            <Link to={"/about"}>고객센터</Link>
           </div>
         </div>
       </div>

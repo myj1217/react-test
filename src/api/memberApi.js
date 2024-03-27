@@ -30,7 +30,7 @@ export const modifyMember = async (member) => {
   form.append("streetAddress", member.streetAddress);
   form.append("detailAddress", member.detailAddress);
   try{
-  const res = await jwtAxios.put(`${host}/modify`, form);
+  const res = await jwtAxios.put(`${host}/modify`, form, header);
 
   return res.data;
 }catch (error) {
@@ -45,7 +45,7 @@ export const modifyPassword = async(member)=>{
   form.append("newPw", member.newPw);
 
   try{
-  const res = await jwtAxios.post(`${host}/modifyPw`, form);
+  const res = await axios.post(`${host}/modifyPw`, form, header);
   }catch (error){
   throw error.response.data;
 }
@@ -58,7 +58,7 @@ export const sendCode = async (email) =>{
   form.append("email", email);
 
   try{
-  const res = await axios.post(`${host}/sendCode`, form);
+  const res = await axios.post(`${host}/sendCode`, form, header);
   return res.data;
   }catch (error){
     throw error.response.data;
@@ -73,7 +73,7 @@ export const resetPw = async (resetData) =>{
   form.append("newPassword", resetData.newPassword);
 
   try{
-  const res = await axios.post(`${host}/resetPw`, form);
+  const res = await axios.post(`${host}/resetPw`, form, header);
   return res.data;
   }catch (error){
     throw error.response.data;
@@ -87,7 +87,7 @@ export const deleteId = async (member) =>{
   form.append("password", member.pw);
 
   try{
-  const res = await jwtAxios.post(`${host}/delete`, form);
+  const res = await axios.post(`${host}/delete`, form, header);
   return res.data;
   }catch (error){
     throw error.response.data;

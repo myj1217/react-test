@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import useCustomLogin from "../../hooks/useCustomLogin";
 import useCustomCart from "../../hooks/useCustomCart";
 import CartItemComponent from "../cart/CartItemComponent";
 import Payment from "../Payment";
 
 const CartComponent = () => {
+  // const [clear, setClear] = useState(false);
   const { isLogin, loginState } = useCustomLogin();
   const { refreshCart, cartItems, changeCart } = useCustomCart();
   const [showModal, setShowModal] = useState(false); // 모달 상태 추가
@@ -39,6 +40,7 @@ const CartComponent = () => {
 
   const closeModal = () => {
     setShowModal(false); // 모달 닫기
+    // setClear(true); // 장바구니 비우기
   };
 
   return (
@@ -56,7 +58,7 @@ const CartComponent = () => {
           </div>
 
           <div className="mt-8">
-            <ul className="flex justify-evenly text-xl text-center">
+            <ul className="flex justify-evenly text-xl text-center border-b-2">
               <li className="w-1/12">번호</li>
               {/* <li>checkbox</li> */}
               <li className="w-2/12">이미지</li>
@@ -78,6 +80,7 @@ const CartComponent = () => {
                   key={item.cino}
                   changeCart={changeCart}
                   email={loginState.email}
+                  // clear={clear}
                 />
               ))}
             </ul>

@@ -1,14 +1,17 @@
+import ChatBot from "../components/chatbot/ChatBot";
 import BasicMenu from "../components/menus/BasicMenu";
 
 const BasicLayout = ({ children }) => {
   return (
     <>
       <div
-        style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999 }}
+        style={{ position: "absolute", top: 0, left: 0, right: 0, zIndex: 9999 }}
       >
         <BasicMenu />
       </div>
-      <div style={{ paddingTop: "244px" }}>{children}</div>
+      <div style={{ paddingTop: "212px" }}>{children}</div>
+      
+      <ChatBot />
     </>
   );
 };
