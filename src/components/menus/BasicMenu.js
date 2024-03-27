@@ -139,9 +139,11 @@ const BasicMenu = () => {
           ) : (
             <ul className="flex space-x-1 font-medium text-xs">
               <li className="pl-3">
-                <Link to={"/cart/"}>장바구니</Link>
+                <Link to={"/cart"}>장바구니</Link>
               </li>
-              <li className="pl-3">마이페이지</li>
+              <li className="pl-3">
+                <Link to={"/member/mypage"}>마이페이지</Link>
+                </li>
               <li className="pl-3">
                 <a onClick={clickLogout} style={{ cursor: "pointer" }}>
                   로그아웃

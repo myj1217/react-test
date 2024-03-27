@@ -31,7 +31,7 @@ const scrollToTop = () => {
   
   const loginInfo = useSelector((state) => state.loginSlice);
 
-  const { moveToLogin,moveToPath } = useCustomLogin();
+  const { moveToPath } = useCustomLogin();
   const [result, setResult] = useState();
 
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const scrollToTop = () => {
 
   const { doLogout} = useCustomLogin();
 
-  const storedMember = localStorage.getItem('member');
+
 
   //정보수정 전송
   const handleSubmit = async (e) => {
@@ -186,7 +186,7 @@ const scrollToTop = () => {
 
 
   return (
-    <div className="mt-6">
+    <div className="">
       {/* 비밀번호 변경 모달 */}
       {isOpen && (
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -207,7 +207,7 @@ const scrollToTop = () => {
       <div className="min-h-screen flex justify-center items-center bg-gray-100">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-screen-md p-8 bg-white rounded-lg shadow-xl"
+        className="w-full p-8 bg-white rounded-lg shadow-xl"
       >
         {/* 이메일 입력 필드 */}
         <label>이메일</label>
@@ -327,11 +327,11 @@ const scrollToTop = () => {
         >
           정보 수정하기
         </button>
-        <button
+        {/* <button
           className="w-full bg-gray-400 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-md transition duration-200 mt-1"
          onClick={goBack}
          >돌아가기
-          </button>
+          </button> */}
       </form>
       </div>
       </div>

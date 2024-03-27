@@ -74,6 +74,15 @@ const ReadComponent_c = ({ pno }) => {
         ))}
       </div>
 
+      {/* <div className="flex justify-center mt-10">
+        <div className="relative mb-4 flex w-full flex-wrap items-stretch">
+          <div className="w-1/5 p-6 text-right font-bold">상품번호</div>
+          <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
+            {product.pno}
+          </div>
+        </div>
+      </div> */}
+
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
           <div className="w-1/5 p-6 text-right font-bold">상품명</div>
@@ -86,7 +95,7 @@ const ReadComponent_c = ({ pno }) => {
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
           <div className="w-1/5 p-6 text-right font-bold">가격</div>
           <div className="w-4/5 p-6 rounded-r border border-solid shadow-md">
-            {product.price.toLocaleString("ko-KR")}
+            {product.price}
           </div>
         </div>
       </div>
@@ -121,7 +130,7 @@ const ReadComponent_c = ({ pno }) => {
           <br />
           수정
         </button>
-        {/* <button
+        <button
           type="button"
           className="rounded p-4 m-2 w-32 bg-gray-800"
           onClick={moveToList}
@@ -129,7 +138,7 @@ const ReadComponent_c = ({ pno }) => {
           목록으로
           <br />
           돌아가기
-        </button> */}
+        </button>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ const KakaoRedirect = lazy(() => import("../pages/member/KakaoRedirectPage"));
 const MemberModify = lazy(() => import("../pages/member/ModifyPage"));
 const Register = lazy(() => import("../pages/member/RegisterPage"));
 const ForgotPassword = lazy(() => import("../pages/member/ForgotPasswordPage"));
+const MyPage = lazy(() => import("../pages/member/MyPagePage"));
 
 const memberRouter = () => {
   return [
@@ -46,6 +47,14 @@ const memberRouter = () => {
       element: (
         <Suspense fallback={Loading}>
           <ForgotPassword />
+        </Suspense>
+      ),
+    },
+    {
+      path: "mypage",
+      element: (
+        <Suspense fallback={Loading}>
+          <MyPage />
         </Suspense>
       ),
     },

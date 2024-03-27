@@ -111,7 +111,7 @@ const ForgotPasswordComponent = () => {
   };
 
   return (
-      <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+      <div className="mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg w-1/2">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">
           비밀번호 찾기
         </h2>
